@@ -49,7 +49,7 @@ default_args = {
     "log_level": "error",
     "report_to": "none",
 }
-training_args = TrainingArguments(per_device_train_batch_size=4, **default_args)
+training_args = TrainingArguments(per_device_train_batch_size=1, **default_args)
 trainer = Trainer(model=model, args=training_args, train_dataset=ds)
 result = trainer.train()
 print_summary(result)
