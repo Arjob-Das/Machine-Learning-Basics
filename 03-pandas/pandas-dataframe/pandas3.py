@@ -66,3 +66,4 @@ df['States']=newind
 print("Using States as new index : ")
 print(df.set_index('States') ) #for permanent use inplace
 #using set_index removes the original index completely unless stored separately
+
