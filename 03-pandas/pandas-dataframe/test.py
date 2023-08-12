@@ -1,3 +1,6 @@
+from transformers import TrainingArguments, Trainer, logging
+from transformers import AutoModelForSequenceClassification
+import torch
 import numpy as np
 from datasets import Dataset
 from pynvml import *
@@ -9,8 +12,6 @@ dummy_data = {
 }
 ds = Dataset.from_dict(dummy_data)
 ds.set_format("pt")
-
-
 
 
 def print_gpu_utilization():
@@ -25,20 +26,18 @@ def print_summary(result):
     print(f"Samples/second: {result.metrics['train_samples_per_second']:.2f}")
     print_gpu_utilization()
 
+
 print_gpu_utilization()
-import torch
 
 
 torch.ones((1, 1)).to("cuda")
 print_gpu_utilization()
 
-from transformers import AutoModelForSequenceClassification
 
-
-model = AutoModelForSequenceClassification.from_pretrained("bert-large-uncased").to("cuda")
+model = AutoModelForSequenceClassification.from_pretrained(
+    "bert-large-uncased").to("cuda")
 print_gpu_utilization()
 
-from transformers import TrainingArguments, Trainer, logging
 
 logging.set_verbosity_error()
 
@@ -49,7 +48,8 @@ default_args = {
     "log_level": "error",
     "report_to": "none",
 }
-training_args = TrainingArguments(per_device_train_batch_size=1, **default_args)
+training_args = TrainingArguments(
+    per_device_train_batch_size=1, **default_args)
 trainer = Trainer(model=model, args=training_args, train_dataset=ds)
 result = trainer.train()
 print_summary(result)
