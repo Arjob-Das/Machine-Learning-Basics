@@ -69,4 +69,87 @@ print(x) """
 print("New Pivot Table : \n", df.pivot_table(
     values='D', index=['A', 'B'], columns=['C']))
 
-
+""" Initial DataFrame : 
+    col1  col2 col3
+0     1   444  abc
+1     2   555  def
+2     3   666  ghi
+3     4   444  xyz
+Unique values from colummn 2 of the DataFrame : 
+ [444 555 666]
+Number Unique values from colummn 2 of the DataFrame using nunique :
+ 3
+Number Unique values from colummn 2 of the DataFrame using len :
+ 3
+Count for occurence of each value in column 2 :
+ 444    2
+555    1
+666    1
+Name: col2, dtype: int64
+Times 2 :
+ 0    2
+1    4
+2    6
+3    8
+Name: col1, dtype: int64
+Length of each element of column 3 :
+ 0    3
+1    3
+2    3
+3    3
+Name: col3, dtype: int64
+Using lambda function :
+ 0    2
+1    4
+2    6
+3    8
+Name: col1, dtype: int64
+List of Column Names :
+ Index(['col1', 'col2', 'col3'], dtype='object')
+Using df.index :
+ RangeIndex(start=0, stop=4, step=1)
+Using df.columns.tolist() :
+ ['col1', 'col2', 'col3']
+Using df.columns.values :
+ ['col1' 'col2' 'col3']
+Using list(df) :
+ ['col1', 'col2', 'col3']
+Sort Values of column 2 and only show column 2 :
+ 0    444
+3    444
+1    555
+2    666
+Name: col2, dtype: int64
+Change the entire dataframe after sorting by column 2:
+    col1  col2 col3
+0     1   444  abc
+3     4   444  xyz
+1     2   555  def
+2     3   666  ghi
+Boolean dataframe to show whether any value is null in dataframe df :
+     col1   col2   col3
+0  False  False  False
+1  False  False  False
+2  False  False  False
+3  False  False  False
+Sum of all values in dataframe that are not null :
+    col1  col2 col3
+0     1   444  abc
+1     2   555  def
+2     3   666  ghi
+3     4   444  xyz
+New DataFrame :
+      A    B  C  D
+0  foo  one  x  1
+1  foo  one  y  3
+2  foo  two  x  2
+3  bar  two  y  5
+4  bar  one  x  4
+New Pivot Table :
+ C          x    y
+A   B
+bar one  4.0  1.0
+    two  NaN  5.0
+foo one  1.0  3.0
+    two  2.0  NaN
+ """

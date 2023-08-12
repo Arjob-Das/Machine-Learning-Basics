@@ -66,3 +66,81 @@ df['States'] = newind
 print("Using States as new index : ")
 print(df.set_index('States'))  # for permanent use inplace
 # using set_index removes the original index completely unless stored separately
+
+
+""" 
+DataFrame : 
+          W         X         Y         Z
+A  2.706850  0.628133  0.907969  0.503826
+B  0.651118 -0.319318 -0.848077  0.605965
+C -2.018168  0.740122  0.528813 -0.589001
+D  0.188695 -0.758872 -0.933237  0.955057
+E  0.190794  1.978757  2.605967  0.683509
+Dataframe boolean for values greater than 0 :
+       W      X      Y      Z
+A   True   True   True   True
+B   True  False  False   True
+C  False   True   True  False
+D   True  False  False   True
+E   True   True   True   True
+The Boolean Dataframe :
+       W      X      Y      Z
+A   True   True   True   True
+B   True  False  False   True
+C  False   True   True  False
+D   True  False  False   True
+E   True   True   True   True
+Boolean dataframe to get conditionally selected values :
+Method 1 :  using the booldf :
+          W         X         Y         Z
+A  2.706850  0.628133  0.907969  0.503826
+B  0.651118       NaN       NaN  0.605965
+C       NaN  0.740122  0.528813       NaN
+D  0.188695       NaN       NaN  0.955057
+E  0.190794  1.978757  2.605967  0.683509
+Method 2 : Using the conditon directly :
+          W         X         Y         Z
+A  2.706850  0.628133  0.907969  0.503826
+B  0.651118       NaN       NaN  0.605965
+C       NaN  0.740122  0.528813       NaN
+D  0.188695       NaN       NaN  0.955057
+E  0.190794  1.978757  2.605967  0.683509
+Rows where values in Column W are greater than 0 :
+          W         X         Y         Z
+A  2.706850  0.628133  0.907969  0.503826
+B  0.651118 -0.319318 -0.848077  0.605965
+D  0.188695 -0.758872 -0.933237  0.955057
+E  0.190794  1.978757  2.605967  0.683509
+Rows where values in Column Z are less than 0 :
+          W         X         Y         Z
+C -2.018168  0.740122  0.528813 -0.589001
+Method 1 : storing the selected dataframe into another variable and accessing entire column X satisfying the selection condition :
+A    0.628133
+B   -0.319318
+D   -0.758872
+E    1.978757
+Name: X, dtype: float64
+Method 2 : Dirctly accessing :
+          X         Y
+A  0.628133  0.907969
+B -0.319318 -0.848077
+E  1.978757  2.605967
+AND operation :
+          W         X         Y         Z
+A  2.706850  0.628133  0.907969  0.503826
+E  0.190794  1.978757  2.605967  0.683509
+OR operation :
+          W         X         Y         Z
+A  2.706850  0.628133  0.907969  0.503826
+B  0.651118 -0.319318 -0.848077  0.605965
+D  0.188695 -0.758872 -0.933237  0.955057
+E  0.190794  1.978757  2.605967  0.683509
+Using States as new index :
+               W         X         Y         Z
+States
+CA      2.706850  0.628133  0.907969  0.503826
+NY      0.651118 -0.319318 -0.848077  0.605965
+WY     -2.018168  0.740122  0.528813 -0.589001
+OR      0.188695 -0.758872 -0.933237  0.955057
+CO      0.190794  1.978757  2.605967  0.683509
+"""
