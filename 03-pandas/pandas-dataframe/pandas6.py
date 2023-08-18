@@ -54,8 +54,7 @@ Initial Dataframe :
 4      FB     Carl    243
 5      FB    Sarah    350
 6      FB   Andrew    300
-f:\Self Study\ML Basics\ML-Basics\03-pandas\pandas-dataframe\pandas6.py:18: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
-  print("Mean of Sales after Grouping by Company Column : \n", bycomp.mean())
+
 Mean of Sales after Grouping by Company Column :
                Sales
 Company
