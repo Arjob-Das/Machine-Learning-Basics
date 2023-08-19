@@ -40,4 +40,16 @@ axes2 = fig.add_axes([0.2, 0.5, 0.4, 0.3])
 
 fig.show()
 plt.pause(4)
+plt.close()
 # if show is used with figure it closes automatically if that is the last statement in the program however show with plt directly needs to be closed manually or using the close() function
+
+
+#showing second axes in the right bottom position
+
+fig = plt.figure()
+axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+axes2 = fig.add_axes([0.45, 0.15, 0.4, 0.3])
+
+fig.show()
+plt.pause(4)
+plt.close()
