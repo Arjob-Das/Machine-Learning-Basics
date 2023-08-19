@@ -57,7 +57,7 @@ axes2.plot(y, x)
 axes1.set_title('Larger Plot')
 axes2.set_title('Smaller Plot')
 
-#plt.show()
-#plt.pause() calls plt.show() automatically
+# plt.show()
+# plt.pause() calls plt.show() and plt.close() automatically
 plt.pause(4)
 plt.close()
