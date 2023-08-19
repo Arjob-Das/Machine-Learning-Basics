@@ -18,7 +18,7 @@ plt.subplot(1, 2, 2)
 plt.plot(y, x, 'b')
 
 """ plt.show() """
-plt.pause(2)  # wait time in seconds
+plt.pause(1)  # wait time in seconds
 plt.close()  # close mentioned figure or all oper figures (default is all)
 fig = plt.figure()
 axes = fig.add_axes([0.1, 0.1, 0.8, 0.8])
@@ -30,7 +30,7 @@ axes.set_title('Title')
 
 fig.show()
 
-plt.pause(4)
+plt.pause(1)
 plt.close()
 
 
@@ -38,18 +38,25 @@ fig = plt.figure()
 axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8])
 axes2 = fig.add_axes([0.2, 0.5, 0.4, 0.3])
 
-fig.show()
+""" fig.show()
 plt.pause(4)
-plt.close()
+plt.close() """
 # if show is used with figure it closes automatically if that is the last statement in the program however show with plt directly needs to be closed manually or using the close() function
 
 
-#showing second axes in the right bottom position
-
+# showing second axes in the right bottom position
+""" 
 fig = plt.figure()
 axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8])
 axes2 = fig.add_axes([0.45, 0.15, 0.4, 0.3])
+ """
 
-fig.show()
+axes1.plot(x, y)
+axes2.plot(y, x)
+
+axes1.set_title('Larger Plot')
+axes2.set_title('Smaller Plot')
+
+plt.show()
 plt.pause(4)
 plt.close()
