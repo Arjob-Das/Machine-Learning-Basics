@@ -51,7 +51,8 @@ df1.plot.scatter(x='A', y='B', s=abs(df1['C']), ax=axes[0, 1], title='abs')
 df1.plot.scatter(x='A', y='B', s=abs(
     df1['C'])*10, ax=axes[1, 0], title='abs and *10')
 
-# s represents size parameter, so the values from column c represent sizes of the points and the multiplier (constant 10) helps in standardising the visibility
+# s represents size parameter, it can be a single value or a column to represent size gradient
+# so the values from column c represent sizes of the points and the multiplier (constant 10) helps in standardising the visibility
 # as some values in the column may be very small
 # since size cannot be negative, it throws a runtime error which can be ignored or corrected with
 plt.pause(2)
