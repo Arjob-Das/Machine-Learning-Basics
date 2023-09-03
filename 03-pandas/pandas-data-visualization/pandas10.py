@@ -40,6 +40,7 @@ plt.pause(0.2)
 plt.figure()
 # maps 3rd column using different colour scheme
 df1.plot.scatter(x='A', y='B', c='C', cmap='coolwarm')
+# c can represent a single colour for plotting two columns or third Column to work as colour gradient
 plt.pause(0.2)
 plt.close('all')
 # plt.figure()
