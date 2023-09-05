@@ -20,6 +20,6 @@ data = dict(type = 'choropleth',
             z=df['GDP (BILLIONS)'],
             #marker=dict(line=dict(color='rgb(255,255,255)',width=2)), #this represents the state border colour and width
             colorbar = {'title':'GDP in Billions USD'})
-layout=dict(title='2014 Global GDP',geo=dict(showframe=False,projection={'type':'mercator'}))
+layout=dict(title='2014 Global GDP',geo=dict(showframe=False,projection={'type':'natural earth'}))
 fig3=go.Figure(data=[data],layout=layout)
 plot(fig3,filename='choroplot3.html')
