@@ -19,7 +19,7 @@ plt.pause(0.2)
 plt.clf()
 plt.figure()
 # plt.fuigure() creates the new plot in new figure instead of using the same figure for the next plot
-
+#testing pycharm2
 sns.violinplot(x='day', y='total_bill', data=tips)
 plt.pause(0.2)
 plt.clf()
