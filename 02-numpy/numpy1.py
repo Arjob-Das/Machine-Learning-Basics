@@ -115,4 +115,3 @@ min index location :  1
 data type of array :  int32
 
 """
-#testing pycharm git
