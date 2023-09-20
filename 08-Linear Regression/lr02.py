@@ -1,3 +1,5 @@
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.preprocessing import StandardScaler
 from sklearn import metrics
 from sklearn.datasets import fetch_california_housing
 from sklearn.linear_model import LinearRegression
@@ -49,9 +51,41 @@ print(calf.keys())
 print(calf['DESCR'])
 print(calf['feature_names'])
 print(calf['data'])
-cald = pd.DataFrame(calf['data'], columns=calf['feature_names'])
-print("Dataframe : \n{d}".format(d=cald))
-print("Head of Dataframe : \n{d}".format(d=cald.head()))
 
 
+# Load the California housing data
+data = fetch_california_housing(as_frame=True)
+
+# Create a DataFrame with the feature data
+df = data.data
+
+# Add the target variable to the DataFrame
+df['target'] = data.target
+
+# Split the data into features (X) and target variable (y)
+X = df.drop('target', axis=1)
+y = df['target']
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42)
+
+# Perform linear regression, evaluate the model, and make predictions (steps 4-6 from the previous answer)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+print(f"Mean Absolute Error: {mae}")
+print(f"Mean Squared Error: {mse}")
+print(f"R-squared: {r2}")
+
+plt.scatter(y_test, y_pred)
+plt.pause(2)
+sns.displot((y_test-y_pred), kde=True, bins=100)
+plt.pause(2)
 plt.waitforbuttonpress()
