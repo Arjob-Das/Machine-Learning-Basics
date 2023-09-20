@@ -37,12 +37,12 @@ print("Correct predictions : \n", y_test)
 plt.scatter(y_test, predictions)
 plt.pause(2)
 sns.displot((y_test-predictions), kde=True)
+plt.pause(2)
 print("Mean Absolute Error : \n", metrics.mean_absolute_error(y_test, predictions))
 print("Mean Squared Error : \n", metrics.mean_squared_error(y_test, predictions))
 print("Root Mean Squared Error : \n",
       np.sqrt(metrics.mean_squared_error(y_test, predictions)))
-
-plt.waitforbuttonpress()
+plt.close('all')
 
 calf = fetch_california_housing()
 print(calf.keys())
@@ -52,3 +52,6 @@ print(calf['data'])
 cald = pd.DataFrame(calf['data'], columns=calf['feature_names'])
 print("Dataframe : \n{d}".format(d=cald))
 print("Head of Dataframe : \n{d}".format(d=cald.head()))
+
+
+plt.waitforbuttonpress()
