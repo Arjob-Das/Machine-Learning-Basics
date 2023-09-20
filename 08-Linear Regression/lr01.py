@@ -16,10 +16,10 @@ has been changed to :
 from sklearn.model_selection import train_test_split
 """
 df = pd.read_csv('USA_Housing.csv')
-print("Dataframe : {d}\n".format(d=df))
-print("Head of Dataframe : {d}\n".format(d=df.head()))
+print("Dataframe : \n{d}".format(d=df))
+print("Head of Dataframe : \n{d}".format(d=df.head()))
 print("Description of Dataframe : \n{d}".format(d=df.describe()))
-print("Names of columns : {d}\n".format(d=df.columns))
+print("Names of columns : \n{d}".format(d=df.columns))
 """ sns.pairplot(df)
 plt.pause(2)
 
@@ -44,7 +44,7 @@ print("Coefficients of the model : \n", lm.coef_)
 print("Columns of X_train : \n", X_train.columns)
 print("Score of the model : \n", lm.score(X_test, y_test))
 cdf = pd.DataFrame(lm.coef_, X.columns, columns=['Coeff'])
-print("Coefficient Dataframe : {d}\n".format(d=cdf))
+print("Coefficient Dataframe : \n{d}".format(d=cdf))
 print("Head of Coefficient Dataframe : \n{d}".format(d=cdf.head()))
 
 calf = fetch_california_housing()
