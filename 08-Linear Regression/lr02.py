@@ -9,6 +9,13 @@ import sklearn as sk
 from sklearn.model_selection import train_test_split
 plt.ion()
 
+df = pd.read_csv('USA_Housing.csv')
+
+print("Dataframe : {d}\n".format(d=df))
+print("Head of Dataframe : {d}\n".format(d=df.head()))
+print("Description of Dataframe : \n{d}".format(d=df.describe()))
+print("Names of columns : {d}\n".format(d=df.columns))
+
 X = df[['Avg. Area Income', 'Avg. Area House Age', 'Avg. Area Number of Rooms',
         'Avg. Area Number of Bedrooms', 'Area Population']]
 y = df['Price']
@@ -25,4 +32,3 @@ print("Coefficient Dataframe : {d}\n".format(d=cdf))
 print("Head of Coefficient Dataframe : \n{d}".format(d=cdf.head()))
 predictions = lm.predict(X_test)
 print("Array of predictions : \n", predictions)
-
