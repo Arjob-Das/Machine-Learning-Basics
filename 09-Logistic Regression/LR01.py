@@ -51,7 +51,7 @@ data = [trace]
 
 layout = go.Layout(title='Histogram Plot')
 fig = go.Figure(data=data, layout=layout)
-#iplot(fig)
+# iplot(fig)
 plot(fig, filename='histogram_iplot_of_fare.html')
 
 plt.waitforbuttonpress()
