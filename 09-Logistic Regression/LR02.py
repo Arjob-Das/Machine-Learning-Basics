@@ -72,5 +72,8 @@ train.drop(['Sex', 'Embarked', 'Name', 'Ticket',
            'PassengerId'], axis=1, inplace=True)
 print("Head of dataset : \n{d}".format(d=train.head()))
 
+# the Pclass column can also be converted to dummy variables
+# check difference during machine learning algorithm when Pclass is treated as catergory (dummy) vs a continuous variable
+
 
 plt.waitforbuttonpress()
