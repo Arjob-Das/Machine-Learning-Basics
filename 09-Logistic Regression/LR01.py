@@ -16,7 +16,7 @@ train = pd.read_csv('titanic_train.csv')
 print("Entire dataset : \n{d}".format(d=train))
 print("Head of dataset : \n{d}".format(d=train.head()))
 print("Null portions of dataset : \n{d}".format(d=train.isnull()))
-""" sns.heatmap(train.isnull(), yticklabels=False, cbar=False, cmap='viridis')
+sns.heatmap(train.isnull(), yticklabels=False, cbar=False, cmap='viridis')
 plt.pause(2)
 sns.set_style('whitegrid')
 
@@ -43,7 +43,7 @@ plt.pause(2)
 plt.figure()
 train['Fare'].hist(bins=40, figsize=(10, 4))
 plt.pause(2)
-plt.close('all') """
+plt.close('all')
 
 cf.go_offline()
 trace = go.Histogram(x=train['Fare'])
