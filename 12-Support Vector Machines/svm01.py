@@ -42,7 +42,7 @@ predictions = model.predict(X_test)
 print("2nd Classification Report : \n{d}".format(
     d=classification_report(y_test, predictions)))
 print("2nd Confusion Matrix : \n{d}".format(
-    d=confusion_matrix(y_test, predictions)))
+    d=confusion_matrix(y_test, predictions))) 
 
 # from sklearn.grid_search import GridSearchCV -> depriciated
 
