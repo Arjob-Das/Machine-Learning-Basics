@@ -68,9 +68,9 @@ Let's import some libraries we will need:
 
 
 column_names = ['user_id', 'item_id', 'rating', 'timestamp']
-df = pd.read_csv('ratings.csv')
+df = pd.read_csv('ratings.csv', compression='zip')
 print("Head of dataset : \n{d}".format(d=df.head()))
-#df.to_csv('ratings.bz2', index=False, compression='bz2')
+# df.to_csv('ratings.bz2', index=False, compression='bz2')
 movie_titles = pd.read_csv("movies.csv")
 movie_titles.drop('genres', axis=1, inplace=True)
 print("Head of Movie Titles : \n{d}".format(d=movie_titles.head()))
