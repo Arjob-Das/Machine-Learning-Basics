@@ -1,9 +1,11 @@
+import time
 from nltk.corpus import stopwords
 import string
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 import nltk
+import os
 
 plt.ion()
 
@@ -55,6 +57,31 @@ def text_process(mess):
     """
     nopunc = [char for char in mess if char not in string.punctuation]
     nopunc = ''.join(nopunc)
-    clear_mess = [word for word in nopunc.split() if word.lower()
-                  not in stopwords.words('english')]
+    clear_mess = ' '.join([word for word in nopunc.split() if word.lower()
+                          not in stopwords.words('english')])
     return clear_mess
+
+
+time.sleep(2)
+
+os.system('cls')
+
+print("Messages Dataframe before processing : \n")
+
+print("Head of messages : \n{d}".format(d=messages.head()))
+
+print("Description of messages : \n{d}".format(d=messages.describe()))
+print("Group by label : \n{d}".format(d=messages.groupby('label').describe()))
+
+messages['length'] = messages['message'].apply(len)
+print("Head of messages with length : \n{d}".format(d=messages.head()))
+
+print("Descriptiom of length of messages : \n{d}".format(
+    d=messages['length'].describe()))
+
+print("Head of messages : \n{d}".format(d=messages.head()))
+
+print("Messages Dataframe after processing : \n")
+
+print("Head of messages : \n{d}".format(
+    d=messages['message'].head(5).apply(text_process)))
