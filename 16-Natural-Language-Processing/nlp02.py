@@ -35,4 +35,26 @@ print("The longest text message : \n{d}".format(
 mess = 'Sample message! Notice: it has punctuation.'
 nopunc = [c for c in mess if c not in string.punctuation]
 print(nopunc)
-print(stopwords.words('english'))
+# print(stopwords.words('english'))
+
+nopunc = ''.join(nopunc)
+nopunc = nopunc.replace('has', 'has no')
+print(nopunc)
+
+print("Nopunc split : \n", nopunc.split())
+clean_mess = [word for word in nopunc.split() if word.lower()
+              not in stopwords.words('english')]
+print("After removing stopwords : \n", clean_mess)
+
+
+def text_process(mess):
+    """ 
+    1. remove punc
+    2. remove stop words
+    3. return list of clean text words
+    """
+    nopunc = [char for char in mess if char not in string.punctuation]
+    nopunc = ''.join(nopunc)
+    clear_mess = [word for word in nopunc.split() if word.lower()
+                  not in stopwords.words('english')]
+    return clear_mess
