@@ -1,3 +1,4 @@
+from sklearn.feature_extraction.text import CountVectorizer
 import time
 from nltk.corpus import stopwords
 import string
@@ -57,8 +58,8 @@ def text_process(mess):
     """
     nopunc = [char for char in mess if char not in string.punctuation]
     nopunc = ''.join(nopunc)
-    clear_mess = ' '.join([word for word in nopunc.split() if word.lower()
-                          not in stopwords.words('english')])
+    clear_mess = [word for word in nopunc.split() if word.lower()
+                  not in stopwords.words('english')]
     return clear_mess
 
 
@@ -85,3 +86,15 @@ print("Messages Dataframe after processing : \n")
 
 print("Head of messages : \n{d}".format(
     d=messages['message'].head(5).apply(text_process)))
+
+
+bow_transformer = CountVectorizer(
+    analyzer=text_process).fit(messages['message'])
+
+print(len(bow_transformer.vocabulary_))
+
+mess4 = messages['message'][3]
+print(mess4)
+bow4 = bow_transformer.transform([mess4])
+print(bow4)
+print(bow4.shape)
