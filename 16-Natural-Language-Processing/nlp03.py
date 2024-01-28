@@ -1,3 +1,6 @@
+from sklearn.metrics import classification_report
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import CountVectorizer
@@ -9,10 +12,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import nltk
 import os
-
 plt.ion()
-
 # nltk.download()
+
 messages = [line.rstrip() for line in open(
     'smsspamcollection/SMSSpamCollection')]
 
@@ -50,7 +52,6 @@ def text_process(mess):
 
 
 time.sleep(2)
-
 os.system('cls')
 
 messages['length'] = messages['message'].apply(len)
@@ -89,3 +90,22 @@ spam_detect_model = MultinomialNB().fit(messages_tfidf, messages['label'])
 
 print("Prediction for mess4 : \n", spam_detect_model.predict(tfidf4)[0])
 print("Actual label for mess4 : \n", messages['label'][3])
+
+all_pred = spam_detect_model.predict(messages_tfidf)
+print("All predictions : \n", all_pred)
+
+msg_train, msg_test, label_train, label_test = train_test_split(
+    messages['message'], messages['label'], test_size=0.3)
+
+# following the previous methods, we would need to apply count vectorizer to msg_train and do all the other modifications before applying multinomial naive bayes
+# however scikit learn provides a more efficient method using data pipeline
+
+pipeline = Pipeline([('bow', CountVectorizer(analyzer=text_process)),
+                    ('tfidf', TfidfTransformer()), ('classifier', MultinomialNB())])
+pipeline.fit(msg_train, label_train)
+
+predictions = pipeline.predict(msg_test)
+print("Predictions : \n", predictions)
+
+print("Classification report : \n",
+      classification_report(predictions, label_test))
