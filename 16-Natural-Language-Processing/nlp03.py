@@ -1,3 +1,5 @@
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import CountVectorizer
 import time
 from nltk.corpus import stopwords
@@ -63,3 +65,27 @@ print(mess4)
 bow4 = bow_transformer.transform([mess4])
 print(bow4)
 print(bow4.shape)
+
+messages_bow = bow_transformer.transform(messages['message'])
+print("Shape of the sparse matrix : \n", messages_bow.shape)
+
+print("Number of non-zero occurences : \n", messages_bow.nnz)
+
+sparsity = ((100.0 * messages_bow.nnz) /
+            (messages_bow.shape[0] * messages_bow.shape[1]))
+print("Sparsity : \n", sparsity)
+
+tfidf_transformer = TfidfTransformer().fit(messages_bow)
+
+tfidf4 = tfidf_transformer.transform(bow4)
+
+print("Tfidf of mess4 : \n", tfidf4)
+print("Frequency of the word university : \n", tfidf_transformer.idf_[
+      bow_transformer.vocabulary_['university']])
+
+messages_tfidf = tfidf_transformer.transform(messages_bow)
+
+spam_detect_model = MultinomialNB().fit(messages_tfidf, messages['label'])
+
+print("Prediction for mess4 : \n", spam_detect_model.predict(tfidf4)[0])
+print("Actual label for mess4 : \n", messages['label'][3])
