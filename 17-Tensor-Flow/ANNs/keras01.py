@@ -1,3 +1,4 @@
+from keras.models import load_model
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from keras.callbacks import EarlyStopping
 from keras.models import Sequential
@@ -69,11 +70,19 @@ print("Dataframe pred_df : \n{d}".format(d=pred_df))
 
 sns.scatterplot(x='Test True Y', y='Model Predictions', data=pred_df)
 plt.pause(2)
-plt.waitforbuttonpress()
-
+# plt.waitforbuttonpress()
+plt.close('all')
 print("Mean Absolute Error : \n", mean_absolute_error(
     pred_df['Test True Y'], pred_df['Model Predictions']))
 print("Mean Squared Error : \n", mean_squared_error(
     pred_df['Test True Y'], pred_df['Model Predictions']))
 print("R2 Score : \n", r2_score(
     pred_df['Test True Y'], pred_df['Model Predictions']))
+
+new_gem = [[998, 1000]]
+new_gem = scaler.transform(new_gem)
+print("New gem prediction : \n", model.predict(new_gem))
+
+model.save('my_gem_model.h5')
+later_model = load_model('my_gem_model.h5')
+print("New gem prediction with later model: \n", later_model.predict(new_gem))
