@@ -1,3 +1,4 @@
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from keras.callbacks import EarlyStopping
 from keras.models import Sequential
 from keras.layers import Dense
@@ -65,3 +66,14 @@ test_predictions = pd.Series(
 pred_df = pd.DataFrame(y_test, columns=['Test True Y'])
 pred_df['Model Predictions'] = test_predictions
 print("Dataframe pred_df : \n{d}".format(d=pred_df))
+
+sns.scatterplot(x='Test True Y', y='Model Predictions', data=pred_df)
+plt.pause(2)
+plt.waitforbuttonpress()
+
+print("Mean Absolute Error : \n", mean_absolute_error(
+    pred_df['Test True Y'], pred_df['Model Predictions']))
+print("Mean Squared Error : \n", mean_squared_error(
+    pred_df['Test True Y'], pred_df['Model Predictions']))
+print("R2 Score : \n", r2_score(
+    pred_df['Test True Y'], pred_df['Model Predictions']))
