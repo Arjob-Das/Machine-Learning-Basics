@@ -48,5 +48,12 @@ print(df['price'].median())
 
 with open('house_price_prediction_model_history.pkl', 'rb') as file:
     history = pickle.load(file)
-history_df = pd.DataFrame(history)
-print(history_df)
+losses = pd.DataFrame(history)
+print(losses)
+
+losses.plot()
+
+plt.pause(2)
+
+plt.waitforbuttonpress()
+plt.close('all')
