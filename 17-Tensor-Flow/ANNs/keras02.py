@@ -62,7 +62,7 @@ df = df.drop('zipcode', axis=1)
 
 plt.close('all')
 
-
+""" 
 # self test by removing outlying expensive houses
 
 n = df[df['price'] >= 3000000].count().iloc[0]
@@ -75,7 +75,7 @@ print(test)
 df = df.drop(test.index)
 print(df.sort_values('price', ascending=False).head(5))
 
-
+ """
 X = df.drop('price', axis=1)
 y = df['price']
 X_train, X_test, y_train, y_test = train_test_split(
@@ -108,6 +108,8 @@ model.compile(optimizer='adam', loss='mse')
 model.fit(x=X_train, y=y_train.values,
           validation_data=(X_test, y_test.values),
           batch_size=128, epochs=400)
+
+
 losses = pd.DataFrame(model.history.history)
 losses.plot()
 
@@ -125,7 +127,7 @@ plt.scatter(y_test, predictions)
 plt.plot(y_test, y_test, 'r')
 
 plt.pause(2)
-errors = y_test.values.reshape(6480, 1) - predictions
+errors = y_test.values.reshape(y_test.shape[0], 1) - predictions
 sns.displot(errors)
 
 plt.close('all')
