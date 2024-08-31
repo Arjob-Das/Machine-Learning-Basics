@@ -1,3 +1,4 @@
+import pickle
 from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.layers import Dense, Activation
@@ -68,8 +69,8 @@ X_train, X_test, y_train, y_test = train_test_split(
 scaler = MinMaxScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
-X_train.shape
-X_test.shape
+print(X_train.shape)
+print(X_test.shape)
 model = Sequential()
 
 model.add(Dense(19, activation='relu'))
@@ -104,3 +105,10 @@ plt.pause(2)
 errors = y_test.values.reshape(6480, 1) - predictions
 sns.displot(errors)
 plt.waitforbuttonpress()
+
+model.save('house_price_prediction_model.h5')
+print(losses.head())
+
+
+with open('house_price_prediction_model_history.pkl', 'wb') as file:
+    pickle.dump(losses, file)
