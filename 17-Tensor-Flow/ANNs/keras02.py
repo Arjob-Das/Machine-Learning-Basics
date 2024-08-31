@@ -1,3 +1,4 @@
+from keras.callbacks import EarlyStopping
 import pickle
 from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score
 from tensorflow.keras.optimizers import Adam
@@ -62,10 +63,25 @@ df = df.drop('zipcode', axis=1)
 plt.close('all')
 
 
+# self test by removing outlying expensive houses
+
+n = df[df['price'] >= 3000000].count().iloc[0]
+m = df.count().iloc[0]
+print(float(n)*100/float(m))
+
+test = df.sort_values(
+    'price', ascending=False).iloc[0:int((0.1/100)*df.shape[0])]
+print(test)
+df = df.drop(test.index)
+print(df.sort_values('price', ascending=False).head(5))
+
+
 X = df.drop('price', axis=1)
 y = df['price']
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.3, random_state=101)
+
+
 scaler = MinMaxScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
@@ -80,11 +96,18 @@ model.add(Dense(19, activation='relu'))
 model.add(Dense(1))
 
 model.compile(optimizer='adam', loss='mse')
+
+# early_stopping = EarlyStopping(monitor='loss', patience=15, min_delta=0.001)
+
+
+""" model.fit(x=X_train, y=y_train.values,
+          validation_data=(X_test, y_test.values),
+          batch_size=128, epochs=2000, callbacks=[early_stopping]) """
+
+
 model.fit(x=X_train, y=y_train.values,
           validation_data=(X_test, y_test.values),
           batch_size=128, epochs=400)
-
-
 losses = pd.DataFrame(model.history.history)
 losses.plot()
 
@@ -104,6 +127,9 @@ plt.plot(y_test, y_test, 'r')
 plt.pause(2)
 errors = y_test.values.reshape(6480, 1) - predictions
 sns.displot(errors)
+
+plt.close('all')
+losses.plot()
 plt.waitforbuttonpress()
 
 model.save('house_price_prediction_model.h5')

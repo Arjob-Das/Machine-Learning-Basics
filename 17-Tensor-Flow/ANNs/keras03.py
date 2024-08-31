@@ -55,5 +55,24 @@ losses.plot()
 
 plt.pause(2)
 
-plt.waitforbuttonpress()
 plt.close('all')
+
+predictions = model.predict(X_test)
+
+errors = y_test.values.reshape(6480, 1) - predictions
+
+print(explained_variance_score(y_test, predictions))
+
+plt.figure(figsize=(12, 6))
+plt.scatter(y_test, predictions)
+plt.plot(y_test, y_test, 'r')
+# the outlying expensive houses cause error mostly
+plt.pause(2)
+
+print(df.drop('price', axis=1).iloc[0])
+single_house = df.drop('price', axis=1).iloc[0]
+single_house = scaler.transform(single_house.values.reshape(-1, 19))
+print(model.predict(single_house))
+
+
+# plt.waitforbuttonpress()
