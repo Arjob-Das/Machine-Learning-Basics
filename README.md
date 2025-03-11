@@ -61,20 +61,22 @@ NLP deals with analyzing and understanding human language. This module covers te
 ## Installation
 To use this repository, clone it and install the required dependencies:
 ```bash
-git clone https://github.com/yourusername/ml-basics.git
-cd ml-basics
+git clone https://github.com/Arjob-Das/Machine-Learning-Basics.git
+cd Machine-Learning-Basics
 pip install -r requirements.txt
 ```
 
 ## Usage
-Each concept is demonstrated in a separate Jupyter Notebook. To run the notebooks:
+Each concept is demonstrated in separate .py files (mostly). Some portions have been commented out (to prevent cluttering of plots. Uncomment to view each plot and analyse them. 
+Only a few have been done in notebooks.
+To run the notebooks:
 ```bash
 jupyter notebook
 ```
 Open the notebook of your choice and follow along with the explanations and code.
 
 ## Dependencies
-- Python 3.x
+- Python 3.x (x>8)
 - NumPy
 - Pandas
 - Scikit-Learn
@@ -84,7 +86,7 @@ Open the notebook of your choice and follow along with the explanations and code
 
 Install dependencies using:
 ```bash
-pip install numpy pandas scikit-learn tensorflow torch matplotlib seaborn plotly folium
+pip install numpy pandas scikit-learn tensorflow torch matplotlib seaborn plotly folium cufflinks
 ```
 
 ## Contributing
@@ -94,7 +96,7 @@ Contributions are welcome! Feel free to fork this repository, make improvements,
 This project is licensed under the MIT License.
 
 ## Author
-[Your Name](https://github.com/yourusername)
+[Arjob Das](https://github.com/Arjob-Das)
 
 ---
 Happy Coding!
