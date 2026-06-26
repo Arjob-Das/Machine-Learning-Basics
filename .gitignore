@@ -28,3 +28,6 @@ venv/
 # Saved models and checkpoints
 *.h5
 *.pkl
+
+# AI and Agent metadata
+.agents/
