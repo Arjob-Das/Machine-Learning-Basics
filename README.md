@@ -86,7 +86,7 @@ Open the notebook of your choice and follow along with the explanations and code
 - Plotly (6.0.1) & Folium (0.19.5)
 - Cufflinks (0.17.3) & Chart-Studio (1.1.0)
 - Pandas-DataReader (0.10.0)
-- NLTK (3.9.1)
+- NLTK (3.9.4)
 - Psutil (7.0.0)
 
 Install all dependencies from the requirements file:
