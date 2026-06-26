@@ -1,8 +1,8 @@
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from keras.callbacks import EarlyStopping
-from keras.models import Sequential
-from keras.layers import Dense
+from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 import pandas as pd

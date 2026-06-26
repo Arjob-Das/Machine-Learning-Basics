@@ -1,0 +1,12 @@
+- `[x]` Update requirements.txt with pinned dependency versions and add missing ones
+- `[x]` Fix Keras imports in Python source files
+  - `[x]` Fix tf02.py
+  - `[x]` Fix ANNs/keras_test.py
+  - `[x]` Fix ANNs/keras03.py
+  - `[x]` Fix ANNs/keras02.py
+  - `[x]` Fix ANNs/keras01.py
+- `[x]` Replace deprecated Seaborn distplot syntax in 05-Seaborn/seaborn04.py
+- `[x]` Update .gitignore with python/Jupyter/IDE ignore patterns
+- `[x]` Update README.md to match the new configuration
+- `[x]` Perform code cleanup (/code-cleanup)
+- `[x]` Prepare walkthrough and commit message

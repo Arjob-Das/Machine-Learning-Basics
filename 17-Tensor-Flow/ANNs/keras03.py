@@ -9,7 +9,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Activation
 from tensorflow.keras.optimizers import Adam
 from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 
 
 model = load_model('house_price_prediction_model.h5')

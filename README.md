@@ -76,17 +76,22 @@ jupyter notebook
 Open the notebook of your choice and follow along with the explanations and code.
 
 ## Dependencies
-- Python 3.x (x>8)
-- NumPy
-- Pandas
-- Scikit-Learn
-- TensorFlow / PyTorch (for deep learning examples)
-- Matplotlib & Seaborn (for visualization)
-- Plotly & Folium (for interactive and geographical plots)
+- Python 3.12+
+- NumPy (1.26.4)
+- Pandas (2.2.2)
+- Scikit-Learn (1.5.0)
+- TensorFlow (2.16.1)
+- PyTorch (2.12.0+cu130)
+- Matplotlib (3.9.0) & Seaborn (0.13.2)
+- Plotly (6.0.1) & Folium (0.19.5)
+- Cufflinks (0.17.3) & Chart-Studio (1.1.0)
+- Pandas-DataReader (0.10.0)
+- NLTK (3.9.1)
+- Psutil (7.0.0)
 
-Install dependencies using:
+Install all dependencies from the requirements file:
 ```bash
-pip install numpy pandas scikit-learn tensorflow torch matplotlib seaborn plotly folium cufflinks
+pip install -r requirements.txt
 ```
 
 ## Contributing

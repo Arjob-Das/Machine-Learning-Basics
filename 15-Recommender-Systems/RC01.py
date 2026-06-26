@@ -137,7 +137,7 @@ Instead we can actually just segement the data into two sets of data:
 
 train_data, test_data = train_test_split(df, test_size=0.25)
 
-""" 
+r""" 
 ## Memory-Based Collaborative Filtering
 
 Memory-Based Collaborative Filtering approaches can be divided into two main sections: **user-item filtering** and **item-item filtering**. 
@@ -201,7 +201,7 @@ user_similarity = pairwise_distances(
 item_similarity = pairwise_distances(
     train_data_matrix.T, metric='cosine', n_jobs=-1)
 
-""" 
+r""" 
 Next step is to make predictions. You have already created similarity matrices: `user_similarity` and `item_similarity` and therefore you can make a prediction 
 by applying following formula for user-based CF:
 
@@ -220,7 +220,7 @@ print("End of similarity calculation")
 print("User similarity : \n", user_similarity)
 print("Item similarity : \n", item_similarity)
 
-""" 
+r""" 
 ### Evaluation
 There are many evaluation metrics but one of the most popular metric used to evaluate accuracy of predicted ratings is *Root Mean Squared Error (RMSE)*. 
 <img src="https://latex.codecogs.com/gif.latex?RMSE&space;=\sqrt{\frac{1}{N}&space;\sum&space;(x_i&space;-\hat{x_i})^2}" title="RMSE =\sqrt{\frac{1}{N} \sum (x_i -\hat{x_i})^2}" />

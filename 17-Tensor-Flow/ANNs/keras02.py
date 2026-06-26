@@ -1,4 +1,4 @@
-from keras.callbacks import EarlyStopping
+from tensorflow.keras.callbacks import EarlyStopping
 import pickle
 from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score
 from tensorflow.keras.optimizers import Adam

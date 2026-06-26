@@ -1,7 +1,7 @@
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, BatchNormalization
-from keras.optimizers import Adam
-from keras.callbacks import EarlyStopping
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout, BatchNormalization
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, LabelEncoder
 from sklearn.model_selection import train_test_split
 import pandas as pd

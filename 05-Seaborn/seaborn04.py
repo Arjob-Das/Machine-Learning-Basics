@@ -11,7 +11,7 @@ plt.pause(0.2)
 
 g = sns.PairGrid(iris)
 
-g.map_diag(sns.distplot)
+g.map_diag(sns.histplot, kde=True)
 g.map_upper(plt.scatter)
 g.map_lower(sns.kdeplot)
 plt.pause(0.2)
@@ -23,7 +23,7 @@ print("Entire tips dataset : \n{d}".format(d=tips))
 print("Head of tips dataset : \n{d}".format(d=tips.head()))
 
 g = sns.FacetGrid(data=tips, col='time', row='smoker')
-g.map(sns.distplot, 'total_bill')
+g.map(sns.histplot, 'total_bill', kde=True)
 plt.pause(2)
 
 g.map(plt.scatter, 'total_bill', 'tip')
